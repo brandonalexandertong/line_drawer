@@ -1,0 +1,33 @@
+{
+  "name": "line_drawer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brandonalexandertong/line_drawer.git"
+  },
+  "author": "Brandon Tong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brandonalexandertong/line_drawer/issues"
+  },
+  "homepage": "https://github.com/brandonalexandertong/line_drawer#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.7.3",
+    "browser-sync": "^2.26.7",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^6.2.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "postcss-preset-env": "^6.7.0"
+  },
+  "dependencies": {
+    "postcss-custom-media": "^7.0.8"
+  }
+}
