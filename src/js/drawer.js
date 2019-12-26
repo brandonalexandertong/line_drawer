@@ -53,6 +53,7 @@ const animate = function () {
   // lets rotate shapes eaach frame
   shapes.forEach(shape => {
     shape.rotateY(0.01)
+    shape.position.setZ(shape.position.z + -1)
   })
 }
 
@@ -61,7 +62,7 @@ animate()
 
 // lets hold a state of hue
 
-let hue = 0
+let saturation = 0
 
 
 const heartShape = new THREE.Shape();
@@ -73,14 +74,30 @@ heartShape.bezierCurveTo( x - 6, y + 11, x - 3, y + 15.4, x + 5, y + 19 );
 heartShape.bezierCurveTo( x + 12, y + 15.4, x + 16, y + 11, x + 16, y + 7 );
 heartShape.bezierCurveTo( x + 16, y + 7, x + 16, y, x + 10, y );
 heartShape.bezierCurveTo( x + 7, y, x + 5, y + 5, x + 5, y + 5 );
+
+const extrusionSettings = {
+    size: 1, height: 1 , curveSegments: 3,
+    bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
+    material: 0, extrudeMaterial: 1, depth: 4
+}
+
+const heartGeometry = new THREE.ExtrudeGeometry(heartShape, extrusionSettings)
+
 // let's make a function to make shapes
 // a and b coordinate to position in shaape.position
 const createShape = function (a, b) {
+  const geometries = [
+    new THREE.ExtrudeGeometry(heartShape, extrusionSettings)
+  ]
+
+
+
+  const randNumber = Math.floor(Math.random() * geometries.length)
   // shape geometry
-  const geometry = new THREE.ShapeGeometry(heartShape)
+  const geometry = geometries[randNumber]
   // shape material
   // making flexible color so we can alter hue
-  const emissiveColor = new THREE.Color("hsl(" + hue + ", 100%, 50%)")
+  const emissiveColor = new THREE.Color("hsl(300, 100%, 50%)")
   const material = new THREE.MeshLambertMaterial({
     color: 0xffffff,
     // // emissive is the shadow color or whats not effected by light
@@ -98,7 +115,7 @@ const createShape = function (a, b) {
   scene.add(shape)
 
   // update hue so for every time a shape is created hue shifts
-  hue = hue + 1
+  saturation = saturation + " 1% "
 }
 
 
